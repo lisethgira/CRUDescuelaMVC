@@ -1,0 +1,49 @@
+﻿@model CRUDescuelaMVC.Models.profesor
+
+@{
+    ViewBag.Title = "Detalles profesor";
+}
+
+<h2>Detalles profesor</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_p)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_p)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dir_p)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dir_p)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel_p)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel_p)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hor_p)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hor_p)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.clave_p }) |
+    @Html.ActionLink("Regresar al listado", "Index")
+</p>

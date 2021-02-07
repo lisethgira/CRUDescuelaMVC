@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="escuelaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="alumno">
+    <Key>
+      <PropertyRef Name="mat_alu" />
+    </Key>
+    <Property Name="mat_alu" Type="Int32" Nullable="false" />
+    <Property Name="nom_alu" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="edad_alu" Type="Int32" />
+    <Property Name="sem_alu" Type="Int32" />
+    <Property Name="gen_alu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="clave_c1" Type="Int32" />
+    <NavigationProperty Name="carrera" Relationship="Self.fk_fc1" FromRole="alumno" ToRole="carrera" />
+  </EntityType>
+  <EntityType Name="carrera">
+    <Key>
+      <PropertyRef Name="Clave_c" />
+    </Key>
+    <Property Name="Clave_c" Type="Int32" Nullable="false" />
+    <Property Name="nom_c" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="durac_c" Type="Double" />
+    <NavigationProperty Name="alumno" Relationship="Self.fk_fc1" FromRole="carrera" ToRole="alumno" />
+  </EntityType>
+  <EntityType Name="materia">
+    <Key>
+      <PropertyRef Name="clave_m" />
+    </Key>
+    <Property Name="clave_m" Type="Int32" Nullable="false" />
+    <Property Name="nom_m" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cred_m" Type="Double" />
+  </EntityType>
+  <EntityType Name="profesor">
+    <Key>
+      <PropertyRef Name="clave_p" />
+    </Key>
+    <Property Name="clave_p" Type="Int32" Nullable="false" />
+    <Property Name="nom_p" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="dir_p" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="tel_p" Type="Int64" />
+    <Property Name="hor_p" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="fk_fc1">
+    <End Role="carrera" Type="Self.carrera" Multiplicity="0..1" />
+    <End Role="alumno" Type="Self.alumno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="carrera">
+        <PropertyRef Name="Clave_c" />
+      </Principal>
+      <Dependent Role="alumno">
+        <PropertyRef Name="clave_c1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="escuelaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="alumno" EntityType="Self.alumno" />
+    <EntitySet Name="carrera" EntityType="Self.carrera" />
+    <EntitySet Name="materia" EntityType="Self.materia" />
+    <EntitySet Name="profesor" EntityType="Self.profesor" />
+    <AssociationSet Name="fk_fc1" Association="Self.fk_fc1">
+      <End Role="carrera" EntitySet="carrera" />
+      <End Role="alumno" EntitySet="alumno" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

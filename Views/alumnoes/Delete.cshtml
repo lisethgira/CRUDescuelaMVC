@@ -1,0 +1,63 @@
+﻿@model CRUDescuelaMVC.Models.alumno
+
+@{
+    ViewBag.Title = "Eliminar Alumno";
+}
+
+<h2>Eliminar Alumno</h2>
+
+<h3>¿Estás seguro que deseas eliminar este alumno?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_alu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_alu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.edad_alu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.edad_alu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sem_alu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sem_alu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gen_alu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gen_alu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.carrera.nom_c)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.carrera.nom_c)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Regresar al listado", "Index")
+        </div>
+    }
+</div>

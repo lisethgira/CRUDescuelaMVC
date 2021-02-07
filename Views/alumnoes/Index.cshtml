@@ -1,0 +1,68 @@
+﻿@model IEnumerable<CRUDescuelaMVC.Models.alumno>
+
+@{
+    ViewBag.Title = "Alumnos";
+}
+
+<div class="jumbotron">
+    <h1>Sistema para ingreso de Alumnos</h1>
+    <img src="https://png.pngtree.com/thumb_back/fw800/back_our/20190622/ourmid/pngtree-graduation-season-banner-image_233380.jpg" alt="banner" />"
+    <p>
+        @Html.ActionLink("Crear nuevo alumno", "Create")
+    </p>
+</div>
+
+
+<div class="col-md-7 bg-danger" style="margin-left:250px;">
+    <div style="margin-top: 20px; margin-bottom: 10px;">
+        <h3 style="color: aliceblue;margin-left: 200px;">Listado de Alumnos</h3>
+    </div>
+    <table class="table table-bordered table-light">
+        <tr>
+            <th class="col-sm-6">
+                @Html.DisplayNameFor(model => model.nom_alu)
+            </th>
+            <th class="col-sm-6">
+                @Html.DisplayNameFor(model => model.edad_alu)
+            </th>
+            <th class="col-sm-6">
+                @Html.DisplayNameFor(model => model.sem_alu)
+            </th>
+            <th class="col-sm-6">
+                @Html.DisplayNameFor(model => model.gen_alu)
+            </th>
+            <th class="col-sm-6">
+                @Html.DisplayNameFor(model => model.carrera.nom_c)
+            </th>
+            <th class="col-sm-6"> Acciones</th>
+        </tr>
+
+
+
+        @foreach (var item in Model)
+        {
+            <tr style="color:black;">
+                <td style="color:black;">
+                    @Html.DisplayFor(modelItem => item.nom_alu)
+                </td>
+                <td style="color:black;">
+                    @Html.DisplayFor(modelItem => item.edad_alu)
+                </td>
+                <td style="color:black;">
+                    @Html.DisplayFor(modelItem => item.sem_alu)
+                </td>
+                <td style="color:black;">
+                    @Html.DisplayFor(modelItem => item.gen_alu)
+                </td>
+                <td style="color:black;">
+                    @Html.DisplayFor(modelItem => item.carrera.nom_c)
+                </td>
+                <td style="color:black;">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.mat_alu }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.mat_alu }) |
+                    @Html.ActionLink("eliminar", "Delete", new { id = item.mat_alu })
+                </td>
+            </tr>
+        }
+
+    </table>

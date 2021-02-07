@@ -1,0 +1,33 @@
+﻿@model CRUDescuelaMVC.Models.materia
+
+@{
+    ViewBag.Title = "Detalles materia";
+}
+
+<h2>Detalles materia</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nom_m)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom_m)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cred_m)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cred_m)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.clave_m }) |
+    @Html.ActionLink("Regresar al listado", "Index")
+</p>

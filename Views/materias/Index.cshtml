@@ -1,0 +1,50 @@
+﻿@model IEnumerable<CRUDescuelaMVC.Models.materia>
+
+@{
+    ViewBag.Title = "Materias";
+}
+
+
+<div class="jumbotron">
+    <h1>Sistema para ingreso de materias</h1>
+    <img src="https://w7.pngwing.com/pngs/91/243/png-transparent-digital-marketing-web-banner-creative-flat-notebook-miscellaneous-creative-artwork-logo.png" alt="banner" />"
+    <p>
+        @Html.ActionLink("Crear nueva materia", "Create")
+    </p>
+</div>
+
+<div class="col-md-7 bg-danger" style="margin-left:250px;">
+    <div style="margin-top: 20px; margin-bottom: 10px;">
+        <h3 style="color: aliceblue;margin-left: 200px;">Listado de materias</h3>
+    </div>
+    <table class="table table-bordered table-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nom_m)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cred_m)
+            </th>
+            <th>Acciones</th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="color:black;">
+                    @Html.DisplayFor(modelItem => item.nom_m)
+                </td>
+                <td style="color:black;">
+                    @Html.DisplayFor(modelItem => item.cred_m)
+                </td>
+                <td style="color:black;">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.clave_m }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.clave_m }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.clave_m })
+                </td>
+            </tr>
+        }
+
+    </table>
+

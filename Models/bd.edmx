@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="escuelaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="alumno">
+          <Key>
+            <PropertyRef Name="mat_alu" />
+          </Key>
+          <Property Name="mat_alu" Type="int" Nullable="false" />
+          <Property Name="nom_alu" Type="varchar" MaxLength="150" />
+          <Property Name="edad_alu" Type="int" />
+          <Property Name="sem_alu" Type="int" />
+          <Property Name="gen_alu" Type="varchar" MaxLength="10" />
+          <Property Name="clave_c1" Type="int" />
+        </EntityType>
+        <EntityType Name="carrera">
+          <Key>
+            <PropertyRef Name="Clave_c" />
+          </Key>
+          <Property Name="Clave_c" Type="int" Nullable="false" />
+          <Property Name="nom_c" Type="varchar" MaxLength="50" />
+          <Property Name="durac_c" Type="float" />
+        </EntityType>
+        <EntityType Name="materia">
+          <Key>
+            <PropertyRef Name="clave_m" />
+          </Key>
+          <Property Name="clave_m" Type="int" Nullable="false" />
+          <Property Name="nom_m" Type="varchar" MaxLength="50" />
+          <Property Name="cred_m" Type="float" />
+        </EntityType>
+        <EntityType Name="profesor">
+          <Key>
+            <PropertyRef Name="clave_p" />
+          </Key>
+          <Property Name="clave_p" Type="int" Nullable="false" />
+          <Property Name="nom_p" Type="varchar" MaxLength="150" />
+          <Property Name="dir_p" Type="varchar" MaxLength="200" />
+          <Property Name="tel_p" Type="bigint" />
+          <Property Name="hor_p" Type="datetime" />
+        </EntityType>
+        <Association Name="fk_fc1">
+          <End Role="carrera" Type="Self.carrera" Multiplicity="0..1" />
+          <End Role="alumno" Type="Self.alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="carrera">
+              <PropertyRef Name="Clave_c" />
+            </Principal>
+            <Dependent Role="alumno">
+              <PropertyRef Name="clave_c1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="escuelaModelStoreContainer">
+          <EntitySet Name="alumno" EntityType="Self.alumno" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="carrera" EntityType="Self.carrera" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="materia" EntityType="Self.materia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="profesor" EntityType="Self.profesor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_fc1" Association="Self.fk_fc1">
+            <End Role="carrera" EntitySet="carrera" />
+            <End Role="alumno" EntitySet="alumno" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="escuelaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="alumno">
+          <Key>
+            <PropertyRef Name="mat_alu" />
+          </Key>
+          <Property Name="mat_alu" Type="Int32" Nullable="false" />
+          <Property Name="nom_alu" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="edad_alu" Type="Int32" />
+          <Property Name="sem_alu" Type="Int32" />
+          <Property Name="gen_alu" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="clave_c1" Type="Int32" />
+          <NavigationProperty Name="carrera" Relationship="Self.fk_fc1" FromRole="alumno" ToRole="carrera" />
+        </EntityType>
+        <EntityType Name="carrera">
+          <Key>
+            <PropertyRef Name="Clave_c" />
+          </Key>
+          <Property Name="Clave_c" Type="Int32" Nullable="false" />
+          <Property Name="nom_c" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="durac_c" Type="Double" />
+          <NavigationProperty Name="alumno" Relationship="Self.fk_fc1" FromRole="carrera" ToRole="alumno" />
+        </EntityType>
+        <EntityType Name="materia">
+          <Key>
+            <PropertyRef Name="clave_m" />
+          </Key>
+          <Property Name="clave_m" Type="Int32" Nullable="false" />
+          <Property Name="nom_m" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cred_m" Type="Double" />
+        </EntityType>
+        <EntityType Name="profesor">
+          <Key>
+            <PropertyRef Name="clave_p" />
+          </Key>
+          <Property Name="clave_p" Type="Int32" Nullable="false" />
+          <Property Name="nom_p" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="dir_p" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="tel_p" Type="Int64" />
+          <Property Name="hor_p" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="fk_fc1">
+          <End Role="carrera" Type="Self.carrera" Multiplicity="0..1" />
+          <End Role="alumno" Type="Self.alumno" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="carrera">
+              <PropertyRef Name="Clave_c" />
+            </Principal>
+            <Dependent Role="alumno">
+              <PropertyRef Name="clave_c1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="escuelaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="alumno" EntityType="Self.alumno" />
+          <EntitySet Name="carrera" EntityType="Self.carrera" />
+          <EntitySet Name="materia" EntityType="Self.materia" />
+          <EntitySet Name="profesor" EntityType="Self.profesor" />
+          <AssociationSet Name="fk_fc1" Association="Self.fk_fc1">
+            <End Role="carrera" EntitySet="carrera" />
+            <End Role="alumno" EntitySet="alumno" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="escuelaModelStoreContainer" CdmEntityContainer="escuelaEntities">
+          <EntitySetMapping Name="alumno">
+            <EntityTypeMapping TypeName="escuelaModel.alumno">
+              <MappingFragment StoreEntitySet="alumno">
+                <ScalarProperty Name="mat_alu" ColumnName="mat_alu" />
+                <ScalarProperty Name="nom_alu" ColumnName="nom_alu" />
+                <ScalarProperty Name="edad_alu" ColumnName="edad_alu" />
+                <ScalarProperty Name="sem_alu" ColumnName="sem_alu" />
+                <ScalarProperty Name="gen_alu" ColumnName="gen_alu" />
+                <ScalarProperty Name="clave_c1" ColumnName="clave_c1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="carrera">
+            <EntityTypeMapping TypeName="escuelaModel.carrera">
+              <MappingFragment StoreEntitySet="carrera">
+                <ScalarProperty Name="Clave_c" ColumnName="Clave_c" />
+                <ScalarProperty Name="nom_c" ColumnName="nom_c" />
+                <ScalarProperty Name="durac_c" ColumnName="durac_c" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="materia">
+            <EntityTypeMapping TypeName="escuelaModel.materia">
+              <MappingFragment StoreEntitySet="materia">
+                <ScalarProperty Name="clave_m" ColumnName="clave_m" />
+                <ScalarProperty Name="nom_m" ColumnName="nom_m" />
+                <ScalarProperty Name="cred_m" ColumnName="cred_m" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="profesor">
+            <EntityTypeMapping TypeName="escuelaModel.profesor">
+              <MappingFragment StoreEntitySet="profesor">
+                <ScalarProperty Name="clave_p" ColumnName="clave_p" />
+                <ScalarProperty Name="nom_p" ColumnName="nom_p" />
+                <ScalarProperty Name="dir_p" ColumnName="dir_p" />
+                <ScalarProperty Name="tel_p" ColumnName="tel_p" />
+                <ScalarProperty Name="hor_p" ColumnName="hor_p" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

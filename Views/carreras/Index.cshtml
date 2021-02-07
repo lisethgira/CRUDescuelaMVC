@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CRUDescuelaMVC.Models.carrera>
+
+@{
+    ViewBag.Title = "Carreras";
+}
+
+<div class="jumbotron">
+    <h1>Sistema para ingreso de Carreras</h1>
+    <img src="https://www.clipartkey.com/mpngs/m/106-1062241_banner-image-trabajo-en-equipo-imagenes-con-movimiento.png" alt="banner" />"
+    <p>
+        @Html.ActionLink("Crear nueva Carrera", "Create")
+    </p>
+</div>
+
+<div class="col-md-7 bg-danger" style="margin-left:250px;">
+    <div style="margin-top: 20px; margin-bottom: 10px;">
+        <h3 style="color: aliceblue;margin-left: 200px;">Listado de Carreras</h3>
+    </div>
+
+    <table class="table table-bordered table-light">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nom_c)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.durac_c)
+            </th>
+            <th>Acciones</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="color:black;">
+                    @Html.DisplayFor(modelItem => item.nom_c)
+                </td>
+                <td style="color:black;">
+                    @Html.DisplayFor(modelItem => item.durac_c)
+                </td>
+                <td style="color:black;">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Clave_c }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.Clave_c }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Clave_c })
+                </td>
+            </tr>
+        }
+
+    </table>
+   

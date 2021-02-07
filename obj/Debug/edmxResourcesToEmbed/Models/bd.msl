@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="escuelaModelStoreContainer" CdmEntityContainer="escuelaEntities">
+    <EntitySetMapping Name="alumno">
+      <EntityTypeMapping TypeName="escuelaModel.alumno">
+        <MappingFragment StoreEntitySet="alumno">
+          <ScalarProperty Name="mat_alu" ColumnName="mat_alu" />
+          <ScalarProperty Name="nom_alu" ColumnName="nom_alu" />
+          <ScalarProperty Name="edad_alu" ColumnName="edad_alu" />
+          <ScalarProperty Name="sem_alu" ColumnName="sem_alu" />
+          <ScalarProperty Name="gen_alu" ColumnName="gen_alu" />
+          <ScalarProperty Name="clave_c1" ColumnName="clave_c1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carrera">
+      <EntityTypeMapping TypeName="escuelaModel.carrera">
+        <MappingFragment StoreEntitySet="carrera">
+          <ScalarProperty Name="Clave_c" ColumnName="Clave_c" />
+          <ScalarProperty Name="nom_c" ColumnName="nom_c" />
+          <ScalarProperty Name="durac_c" ColumnName="durac_c" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="materia">
+      <EntityTypeMapping TypeName="escuelaModel.materia">
+        <MappingFragment StoreEntitySet="materia">
+          <ScalarProperty Name="clave_m" ColumnName="clave_m" />
+          <ScalarProperty Name="nom_m" ColumnName="nom_m" />
+          <ScalarProperty Name="cred_m" ColumnName="cred_m" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="profesor">
+      <EntityTypeMapping TypeName="escuelaModel.profesor">
+        <MappingFragment StoreEntitySet="profesor">
+          <ScalarProperty Name="clave_p" ColumnName="clave_p" />
+          <ScalarProperty Name="nom_p" ColumnName="nom_p" />
+          <ScalarProperty Name="dir_p" ColumnName="dir_p" />
+          <ScalarProperty Name="tel_p" ColumnName="tel_p" />
+          <ScalarProperty Name="hor_p" ColumnName="hor_p" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

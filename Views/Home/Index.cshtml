@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Escuela San Fernando";
+}
+
+<div class="jumbotron">
+    <h1>Escuela San Fernando</h1>
+    <p class="lead">donde tus sueños se hacen realidad</p>
+    <img src="https://png.pngtree.com/thumb_back/fw800/background/20190221/ourmid/pngtree-school-season-cartoon-blue-campus-promotion-image_13929.jpg" alt="banner"/>"
+</div>
+
+<div class="row" style="margin-left:200px;">
+    <div class="col-md-6">
+        <h2>@Html.ActionLink("carrera", "Index", "carreras")</h2>
+        <p>
+            permite agregar carreras a una tabla
+        </p>
+        <p> <a class="btn btn-default" @Html.ActionLink("ver tabla", "Index", "carreras") </p>
+    </div>
+    <div class="col-md-6">
+        <h2>@Html.ActionLink("alumno", "Index", "alumnoes")</h2>
+        <p>permite agregar alumnos a una tabla</p>
+        <p> <a class="btn btn-default" @Html.ActionLink("ver tabla", "Index", "alumnoes") </p>
+    </div>
+</div>
+<div class="row"style="margin-left:200px;">
+    <div class="col-md-6">
+        <h2>@Html.ActionLink("materia", "Index", "materias")</h2>
+        <p>permite agregar materias a una tabla</p>
+        <p class="btn btn-default" @Html.ActionLink("ver tabla", "Index", "materias") </p>
+    </div>
+    <div class="col-md-6">
+        <h2>@Html.ActionLink("profesor", "Index", "profesors")</h2>
+        <p>
+            permite agregar maestros a una tabla
+        </p>
+        <p> <a class="btn btn-default" @Html.ActionLink("ver tabla", "Index", "profesors") </p>
+    </div>
+</div>

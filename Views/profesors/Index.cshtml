@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CRUDescuelaMVC.Models.profesor>
+
+@{
+    ViewBag.Title = "Profesor";
+}
+
+<div class="jumbotron">
+<h1>Sistema para ingreso de materias</h1>
+<img src="https://png.pngtree.com/thumb_back/fw800/back_our/20190622/ourmid/pngtree-english-teacher-class-banner-background-image_226677.jpg" alt="banner" />"
+<p>
+    @Html.ActionLink("Crear nuevo profesor", "Create")
+</p>
+</div>
+
+<div class="col-md-7 bg-danger" style="margin-left:250px;">
+    <div style="margin-top: 20px; margin-bottom: 10px;">
+        <h3 style="color: aliceblue;margin-left: 200px;">Listado de profesores</h3>
+    </div>
+    <table class="table table-bordered table-light">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.nom_p)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.dir_p)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.tel_p)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.hor_p)
+                </th>
+                <th>Acciones</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nom_p)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dir_p)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.tel_p)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.hor_p)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.clave_p }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.clave_p }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.clave_p })
+                    </td>
+                </tr>
+            }
+
+        </table>
